@@ -4,11 +4,13 @@
 #include "Actuator.h"
 
 class VibrationMotor : public Actuator {
-  int pin;
+  int pin, intensity = 0;
 public:
   VibrationMotor(int pin);
   void activate() override;
   void deactivate() override;
+  void setIntensity(int intensity);
 };
+
 
 #endif

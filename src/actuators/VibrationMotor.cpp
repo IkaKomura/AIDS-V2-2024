@@ -12,3 +12,8 @@ void VibrationMotor::activate() {
 void VibrationMotor::deactivate() {
   digitalWrite(pin, LOW); // Example deactivation
 }
+
+void VibrationMotor::setIntensity(int intensity) {
+  this->intensity = intensity;
+  analogWrite(pin, intensity); // Use PWM to set motor intensity
+}
