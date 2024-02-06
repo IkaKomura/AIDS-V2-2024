@@ -10,6 +10,7 @@ public:
   void activate() override;
   void deactivate() override;
   void setIntensity(int intensity);
+
 };
 
 

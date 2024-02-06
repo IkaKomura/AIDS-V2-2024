@@ -17,3 +17,4 @@ void VibrationMotor::setIntensity(int intensity) {
   this->intensity = intensity;
   analogWrite(pin, intensity); // Use PWM to set motor intensity
 }
+

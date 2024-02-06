@@ -1,18 +1,20 @@
+// TemperatureSensor.cpp
 #include "TemperatureSensor.h"
-#include <OneWire.h>
-#include <DallasTemperature.h>
 
-// Data wire is plugged into pin 2 on the Arduino
-#define ONE_WIRE_BUS 2
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature sensors(&oneWire);
+TemperatureSensor::TemperatureSensor(int pin) 
+    : pin(pin), oneWire(pin), sensors(&oneWire), lastTemperature(0.0) {
+    // Constructor body, if needed
+}
 
 void TemperatureSensor::init() {
-  sensors.begin(); // Start the DallasTemperature library
+    sensors.begin(); // Initialize the DallasTemperature library
 }
 
 void TemperatureSensor::update() {
-  sensors.requestTemperatures(); // Send the command to get temperatures
-  float temperature = sensors.getTempCByIndex(0); // Read temperature in Celsius
-  this->lastTemperature = temperature; // Store the latest temperature reading
+    sensors.requestTemperatures(); // Request temperatures
+    lastTemperature = sensors.getTempCByIndex(0); // Read the temperature in Celsius
+}
+
+float TemperatureSensor::readData() {
+    return lastTemperature; // Return the last read temperature
 }
