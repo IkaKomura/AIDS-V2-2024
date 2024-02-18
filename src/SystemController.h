@@ -4,16 +4,18 @@
 #include "sensors/SensorManager.h"
 #include "actuators/ActuatorController.h"
 #include "data_processing/DataProcessor.h"
+#include "Config.h" // Include only if needed for the class implementation
 
 class SystemController {
-    SensorManager sensorManager;
-    ActuatorController actuatorController;
-    DataProcessor dataProcessor;
-
 public:
     SystemController();
     void init();
     void run();
+
+private:
+    SensorManager sensorManager;
+    ActuatorController actuatorController;
+    DataProcessor dataProcessor;
 };
 
 #endif

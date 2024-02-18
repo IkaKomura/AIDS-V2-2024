@@ -1,38 +1,20 @@
-#ifndef SystemController_h
-#define SystemController_h
-
-#include "sensors/SensorManager.h"
-#include "actuators/ActuatorController.h"
-#include "data_processing/DataProcessor.h"
-#include "Config.h"
-
-class SystemController {
-    SensorManager sensorManager;
-    ActuatorController actuatorController;
-    DataProcessor dataProcessor;
-
-public:
-    SystemController();
-    void init();
-    void run();
-};
-
-#endif
-
 #include "SystemController.h"
 #include "sensors/LDRSensor.h"
 #include "sensors/TemperatureSensor.h"
 #include "actuators/VibrationMotor.h"
 
-SystemController::SystemController() {}
+SystemController::SystemController() {
+    // Constructor body
+    // You can initialize member variables here if needed
+}
 
 void SystemController::init() {
     // Initialize Sensors
-    sensorManager.addSensor(new LDRSensor(LDR_PIN)); // Define LDR_PIN according to your hardware setup
-    sensorManager.addSensor(new TemperatureSensor(TEMP_SENSOR_PIN)); // Define TEMP_SENSOR_PIN
+    sensorManager.addSensor(new LDRSensor(LDR_PIN)); // Ensure LDR_PIN is defined in Config.h or elsewhere
+    sensorManager.addSensor(new TemperatureSensor(TEMP_SENSOR_PIN)); // Ensure TEMP_SENSOR_PIN is defined
 
     // Initialize Actuators
-    actuatorController.addActuator(new VibrationMotor(VIB_MOTOR_PIN)); // Define VIB_MOTOR_PIN
+    actuatorController.addActuator(new VibrationMotor(VIB_MOTOR_PIN)); // Ensure VIB_MOTOR_PIN is defined
 
     // Other initialization if needed
 }
