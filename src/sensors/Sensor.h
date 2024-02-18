@@ -9,3 +9,6 @@ public:
 };
 
 #endif
+
+
+// Path: src/sensors/Sensor.h

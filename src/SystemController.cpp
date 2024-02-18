@@ -2,6 +2,7 @@
 #include "sensors/LDRSensor.h"
 #include "sensors/TemperatureSensor.h"
 #include "actuators/VibrationMotor.h"
+#include "Config.h" 
 
 SystemController::SystemController() {
     // Constructor body
@@ -20,17 +21,11 @@ void SystemController::init() {
 }
 
 void SystemController::run() {
-    while (true) {
-        // Update all sensors
-        sensorManager.updateSensors();
-        
-        // Collect sensor data
-        auto sensorData = sensorManager.collectSensorData();
-        
-        // Process sensor data
-        auto processedData = dataProcessor.processSensorData(sensorData);
-        
-        // Control actuators based on processed data
-        actuatorController.controlActuators(processedData);
-    }
+    // Main loop or operation of the system
+    // This example updates sensors, processes data, and controls actuators accordingly
+    sensorManager.updateSensors();
+    auto sensorData = sensorManager.collectSensorData();
+    auto processedData = dataProcessor.processSensorData(sensorData);
+    actuatorController.controlActuators(processedData);
 }
+// Path: src/sensors/LDRSensor.cpp

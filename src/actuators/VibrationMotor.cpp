@@ -18,3 +18,6 @@ void VibrationMotor::setIntensity(int intensity) {
   analogWrite(pin, intensity); // Use PWM to set motor intensity
 }
 
+
+
+// Path: src/actuators/VibrationMotor.cpp

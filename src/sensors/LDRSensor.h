@@ -15,3 +15,6 @@ public:
 };
 
 #endif
+
+
+// Path: src/sensors/LDRSensor.h

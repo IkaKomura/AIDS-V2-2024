@@ -21,3 +21,6 @@ int LDRSensor::getLightIntensity() const {
 float LDRSensor::readData() {
     return static_cast<float>(lastLightIntensity);
 }
+
+
+// Path: src/sensors/LDRSensor.cpp  

@@ -18,3 +18,5 @@ void TemperatureSensor::update() {
 float TemperatureSensor::readData() {
     return lastTemperature; // Return the last read temperature
 }
+
+// Path: src/sensors/TemperatureSensor.cpp

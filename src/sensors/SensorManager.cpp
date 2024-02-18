@@ -18,3 +18,6 @@ std::vector<float> SensorManager::collectSensorData() {
     }
     return sensorData;
 }
+
+
+// Path: src/sensors/SensorManager.cpp

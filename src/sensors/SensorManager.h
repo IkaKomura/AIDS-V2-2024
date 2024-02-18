@@ -16,3 +16,6 @@ public:
 };
 
 #endif
+
+
+// Path: src/sensors/SensorManager.h

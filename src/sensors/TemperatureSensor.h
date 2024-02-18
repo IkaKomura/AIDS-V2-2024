@@ -20,3 +20,5 @@ public:
 };
 
 #endif
+
+// Path: src/sensors/TemperatureSensor.h
