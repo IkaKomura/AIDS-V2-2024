@@ -8,7 +8,7 @@
 
 // Actuator pin definitions
 #define VIB_MOTOR_PIN 25   // Replace 25 with the actual pin number for the vibration motor
-
+#define LED_PIN 26         // Replace 26 with the actual pin number for the LED
 // Add more configuration settings as needed
 
 #endif

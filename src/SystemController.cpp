@@ -2,7 +2,9 @@
 #include "sensors/LDRSensor.h"
 #include "sensors/TemperatureSensor.h"
 #include "actuators/VibrationMotor.h"
+#include "actuators/LED.h"
 #include "Config.h" 
+
 
 SystemController::SystemController() {
     // Constructor body
@@ -16,6 +18,8 @@ void SystemController::init() {
 
     // Initialize Actuators
     actuatorController.addActuator(new VibrationMotor(VIB_MOTOR_PIN)); // Ensure VIB_MOTOR_PIN is defined
+    actuatorController.addActuator(new LED(LED_PIN)); // Add LED to the system
+
 
     // Other initialization if needed
 }
