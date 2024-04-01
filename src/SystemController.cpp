@@ -13,8 +13,8 @@ SystemController::SystemController() {
 
 void SystemController::init() {
     // Initialize Sensors
-    sensorManager.addSensor(new LDRSensor(LDR_PIN)); // Ensure LDR_PIN is defined in Config.h or elsewhere
-    sensorManager.addSensor(new TemperatureSensor(TEMP_SENSOR_PIN)); // Ensure TEMP_SENSOR_PIN is defined
+    sensorManager.addSensor(new LDRSensor(1, LDR_PIN)); // Ensure LDR_PIN is defined in Config.h or elsewhere
+    sensorManager.addSensor(new TemperatureSensor(2, TEMP_SENSOR_PIN)); // Ensure TEMP_SENSOR_PIN is defined
 
     // Initialize Actuators
     actuatorController.addActuator(new VibrationMotor(VIB_MOTOR_PIN)); // Ensure VIB_MOTOR_PIN is defined

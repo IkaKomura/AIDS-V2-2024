@@ -1,29 +1,20 @@
-#include "Sensor.h"
-#include <OneWire.h>
-#include <DallasTemperature.h>
+// TemperatureSensor.cpp
+#include "TemperatureSensor.h"
 
-class TemperatureSensor : public Sensor {
-    int pin;
-    float lastTemperature;
-    OneWire oneWire;
-    DallasTemperature sensors;
+TemperatureSensor::TemperatureSensor(int id, int pin) 
+    : Sensor(id), pin(pin), oneWire(pin), sensors(&oneWire), lastTemperature(0.0) {
+    // Constructor body
+}
 
-public:
-    TemperatureSensor(int id, int pin)
-        : Sensor(id), pin(pin), oneWire(pin), sensors(&oneWire), lastTemperature(0.0) {}
+void TemperatureSensor::init() {
+    sensors.begin();
+}
 
-    void init() override {
-        sensors.begin();
-    }
+void TemperatureSensor::update() {
+    sensors.requestTemperatures(); // Requests temperature reading from the sensor
+    lastTemperature = sensors.getTempCByIndex(0); // Retrieves the temperature reading
+}
 
-    void update() override {
-        sensors.requestTemperatures();
-        lastTemperature = sensors.getTempCByIndex(0);
-    }
-
-    float readData() override {
-        return lastTemperature;
-    }
-};
-
-// Path: src/sensors/TemperatureSensor.cpp
+float TemperatureSensor::readData() {
+    return lastTemperature; // Returns the most recent temperature reading
+}

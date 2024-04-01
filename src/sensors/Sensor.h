@@ -6,6 +6,7 @@ protected:
     int sensorId;
 public:
     Sensor(int id) : sensorId(id) {}
+    virtual ~Sensor() {} // Virtual destructor
     virtual void init() = 0;
     virtual void update() = 0;
     virtual float readData() = 0;

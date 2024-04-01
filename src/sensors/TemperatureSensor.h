@@ -7,18 +7,16 @@
 #include <DallasTemperature.h>
 
 class TemperatureSensor : public Sensor {
-    int pin; // Add a member variable to store the pin number
+    int pin;
     float lastTemperature;
-    OneWire oneWire; // Move OneWire instance here
-    DallasTemperature sensors; // Move DallasTemperature instance here
+    OneWire oneWire;
+    DallasTemperature sensors;
 
 public:
-    TemperatureSensor(int pin); // Add a constructor that accepts a pin number
+    TemperatureSensor(int id, int pin);
     void init() override;
     void update() override;
     float readData() override;
 };
 
 #endif
-
-// Path: src/sensors/TemperatureSensor.h

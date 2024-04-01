@@ -7,14 +7,11 @@ class LDRSensor : public Sensor {
     int pin;
     int lastLightIntensity;
 public:
-    LDRSensor(int pin);
+    LDRSensor(int id, int pin);
     void init() override;
     void update() override;
-    int getLightIntensity() const;
     float readData() override;
+    int getLightIntensity() const;
 };
 
 #endif
-
-
-// Path: src/sensors/LDRSensor.h
