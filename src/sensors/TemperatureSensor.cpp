@@ -1,22 +1,29 @@
-// TemperatureSensor.cpp
-#include "TemperatureSensor.h"
+#include "Sensor.h"
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
-TemperatureSensor::TemperatureSensor(int pin) 
-    : pin(pin), oneWire(pin), sensors(&oneWire), lastTemperature(0.0) {
-    // Constructor body, if needed
-}
+class TemperatureSensor : public Sensor {
+    int pin;
+    float lastTemperature;
+    OneWire oneWire;
+    DallasTemperature sensors;
 
-void TemperatureSensor::init() {
-    sensors.begin(); // Initialize the DallasTemperature library
-}
+public:
+    TemperatureSensor(int id, int pin)
+        : Sensor(id), pin(pin), oneWire(pin), sensors(&oneWire), lastTemperature(0.0) {}
 
-void TemperatureSensor::update() {
-    sensors.requestTemperatures(); // Request temperatures
-    lastTemperature = sensors.getTempCByIndex(0); // Read the temperature in Celsius
-}
+    void init() override {
+        sensors.begin();
+    }
 
-float TemperatureSensor::readData() {
-    return lastTemperature; // Return the last read temperature
-}
+    void update() override {
+        sensors.requestTemperatures();
+        lastTemperature = sensors.getTempCByIndex(0);
+    }
+
+    float readData() override {
+        return lastTemperature;
+    }
+};
 
 // Path: src/sensors/TemperatureSensor.cpp

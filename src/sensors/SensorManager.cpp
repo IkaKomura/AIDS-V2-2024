@@ -21,3 +21,4 @@ std::vector<float> SensorManager::collectSensorData() {
 
 
 // Path: src/sensors/SensorManager.cpp
+

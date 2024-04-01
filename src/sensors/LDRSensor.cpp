@@ -1,26 +1,28 @@
-#include "LDRSensor.h"
+#include "Sensor.h"
 #include <Arduino.h>
 
-#include "Config.h"
+class LDRSensor : public Sensor {
+    int pin;
+    int lastLightIntensity;
+public:
+    LDRSensor(int id, int pin) : Sensor(id), pin(pin), lastLightIntensity(0) {}
 
-LDRSensor::LDRSensor(int pin) : pin(pin), lastLightIntensity(0) {}
+    void init() override {
+        pinMode(pin, INPUT);
+    }
 
-void LDRSensor::init() {
-    pinMode(pin, INPUT);
-}
+    void update() override {
+        int ldrValue = analogRead(pin);
+        lastLightIntensity = map(ldrValue, 0, 4095, 0, 1000); // Assuming a 12-bit ADC resolution
+    }
 
-void LDRSensor::update() {
-    int ldrValue = analogRead(pin);
-    lastLightIntensity = map(ldrValue, 0, 4095, 0, 1000); // Assuming a 12-bit ADC resolution
-}
+    float readData() override {
+        return static_cast<float>(lastLightIntensity);
+    }
 
-int LDRSensor::getLightIntensity() const {
-    return lastLightIntensity;
-}
+    int getLightIntensity() const {
+        return lastLightIntensity;
+    }
+};
 
-float LDRSensor::readData() {
-    return static_cast<float>(lastLightIntensity);
-}
-
-
-// Path: src/sensors/LDRSensor.cpp  
+// Path: src/sensors/TemperatureSensor.cpp
